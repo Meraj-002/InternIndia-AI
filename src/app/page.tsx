@@ -15,6 +15,7 @@ import AboutUs from "./components/AboutUs";
 import Footer from "./components/Footer";
 
 export default function Home() {
+
   const [form, setForm] = useState({
     education: "",
     skills: [] as string[],
@@ -72,27 +73,36 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50">
-      <Header />
-      <HeroForm
-        form={form}
-        setForm={setForm}
-        errors={errors}
-        handleSubmit={handleSubmit}
-        videoRef={videoRef}
-      />
-      {results.length > 0 && (
-        <div id="match-results" ref={resultsRef}>
-          <ResultsGrid items={results} />
-        </div>
-      )}
-      <HowItWorks videoRef={videoRef} />
-      <WhyChoose />
-      <Impacts />
-      <AboutUs />
-      <MeetTeam />
-      <ReadyAgain videoRef={videoRef} />
-      <Footer />
-    </div>
+    <><style>{`
+  iframe.goog-te-banner-frame {
+    display: none !important;
+  }
+  .goog-te-banner-frame.skiptranslate {
+    display: none !important;
+  }
+  body {
+    top: 0px !important;
+  }
+`}</style><div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50">
+        <Header />
+        <HeroForm
+          form={form}
+          setForm={setForm}
+          errors={errors}
+          handleSubmit={handleSubmit}
+          videoRef={videoRef} />
+        {results.length > 0 && (
+          <div id="match-results" ref={resultsRef}>
+            <ResultsGrid items={results} />
+          </div>
+        )}
+        <HowItWorks videoRef={videoRef} />
+        <WhyChoose />
+        <Impacts />
+        <AboutUs />
+        <MeetTeam />
+        <ReadyAgain videoRef={videoRef} />
+        <Footer />
+      </div></>
   );
 }

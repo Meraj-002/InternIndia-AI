@@ -25,46 +25,53 @@ async function main() {
   const db = drizzle(pool);
 
   try {
-    console.log("🗑️ Clearing old data...");
-    await db.delete(internshipTable);
-
     let inserted = 0;
+    let updated = 0;
+
     for (const rec of arr) {
       const row = {
+        id: rec.ID, // make sure your internshipTable has "id" column as primary key
         title: rec.title ?? "",
-        sector: rec.Sector ?? rec.sector ?? "",
-        state: rec.State ?? rec.state ?? "",
-        district: rec.District ?? rec.district ?? "",
-        benefits: Array.isArray(rec.Benefits)
-          ? rec.Benefits
-          : typeof rec.Benefits === "string"
-          ? rec.Benefits.split(",").map((s) => s.trim())
+        sector: rec.sector ?? "",
+        state: rec.state ?? "",
+        district: rec.district ?? "",
+        benefits: Array.isArray(rec.benefits)
+          ? rec.benefits
+          : typeof rec.benefits === "string"
+          ? rec.benefits.split(",").map((s) => s.trim())
           : [],
-        candidatesApplied: rec.Candidatesapplied ?? rec.candidatesApplied ?? 0,
-        companyLogo: rec.companylogo ?? rec.companyLogo ?? null,
-        companyName: rec.companyname ?? rec.companyName ?? null,
-        noOfOpportunities: rec.noofopportunities ?? rec.noOfOpportunities ?? null,
-        description: rec.Description ?? rec.description ?? null,
-        addressLine1: rec.addressline1 ?? rec.addressLine1 ?? null,
-        addressLine2: rec.addrssline2 ?? rec.addressLine2 ?? null,
+        candidatesApplied: rec.candidatesapplied ?? 0,
+        companyLogo: rec.companylogo ?? null,
+        companyName: rec.companyname ?? null,
+        noOfOpportunities: rec.noofopportunities ?? null,
+        description: rec.description ?? null,
+        addressLine1: rec.addressline1 ?? null,
+        addressLine2: rec.addrssline2 ?? null,
         zip: rec.zip ?? null,
         village: rec.village ?? null,
-        minimumQualification:
-          rec.MinimumQualification ?? rec.minimumQualification ?? null,
+        minimumQualification: rec.minimumqualification ?? null,
         course: rec.course ?? null,
         specialization: rec.specialization ?? null,
         certifications: rec.certifications ?? null,
-        skills: rec.skills ?? null, // keep as string
-        specialRequirements: rec.spclrequirements ?? rec.specialRequirements ?? null,
+        skills: rec.skills ?? null,
+        specialRequirements: rec.spclrequirements ?? null,
         stipend: rec.stipend ?? null,
         duration: rec.duration ?? null,
       };
 
-      await db.insert(internshipTable).values(row);
+      // Upsert query
+      await db
+        .insert(internshipTable)
+        .values(row)
+        .onConflictDoUpdate({
+          target: internshipTable.id, // assumes 'id' is primary key
+          set: row,
+        });
+
       inserted++;
     }
 
-    console.log(`✅ Inserted ${inserted} rows into InternshipDetails`);
+    console.log(`✅ Upserted ${inserted} rows into InternshipDetails`);
   } catch (err) {
     console.error("❌ Error inserting:", err);
   } finally {

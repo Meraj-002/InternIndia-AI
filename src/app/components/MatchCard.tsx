@@ -24,16 +24,16 @@ export default function MatchCard({
   const paid = /\d/.test(job.stipend || "");
 
   return (
-    <div className="relative bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <div className="relative bg-white rounded-2xl shadow-lg p-5 transition-transform transform hover:scale-101 hover:shadow-2xl duration-300 ease-in-out">
       <div className="flex items-start justify-between">
         {/* Company info */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-100 grid place-items-center">
+          <div className="w-10 h-10 rounded-xl grid place-items-center">
             {job.companyLogo ? (
               <img
                 src={job.companyLogo}
                 alt={job.companyName || "Company"}
-                className="w-8 h-8 object-contain"
+                className="w-full h-full object-cover rounded-full"
               />
             ) : (
               <span className="text-xl">💼</span>
@@ -69,10 +69,25 @@ export default function MatchCard({
       {/* Tags */}
       <div className="mt-3 flex flex-wrap gap-2 text-sm">
         {skills.length > 0 && (
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-semibold">
-            Skills: <span className="font-normal">{skills.join(", ")}</span>
-          </span>
-        )}
+  <div className="flex gap-2 flex-wrap">
+    {/* Label card */}
+    <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-semibold">
+      Skills : 
+    </span>
+
+    {/* Each skill in its own card */}
+    {skills.map((skill, index) => (
+      <span
+        key={index}
+        className="px-3 py-1 rounded-full bg-blue-100 text-blue-700"
+      >
+        {skill}
+      </span>
+    ))}
+  </div>
+)}
+
+
         <span
           className={`px-3 py-1 rounded-full ${
             paid ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-600"
@@ -93,12 +108,12 @@ export default function MatchCard({
       {/* Actions */}
       <div className="mt-5 flex gap-3">
         <button
-          className="flex-1 border border-gray-300 bg-white text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-50"
+          className="flex-1 border border-gray-300 bg-white text-gray-800 py-2 rounded-lg font-medium transition-transform transform hover:scale-101 hover:shadow-xl bg-gray-100 duration-300 ease-in-out"
           onClick={onViewDetails}
         >
           View Details
         </button>
-        <button className="flex-1 bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:opacity-90">
+        <button className="flex-1 bg-indigo-600 text-white py-2 rounded-lg font-semibold transition-transform transform hover:scale-102 hover:shadow-2xl duration-300 ease-in-out">
           Apply Now
         </button>
       </div>

@@ -22,7 +22,7 @@ export default function HowItWorks({
           <section className="w-full py-4">
             <div className="max-w-6xl mx-auto px-6 relative">
               {/* Center Line */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-green-500 to-purple-500"></div>
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-green-500 to-purple-500 hidden md:block"></div>
 
               {/* Step 1 */}
               <div className="grid md:grid-cols-2 gap-12 items-center mb-10 relative">
@@ -42,14 +42,14 @@ export default function HowItWorks({
                     <li>✅ Select Skills & Expertise</li>
                   </ul>
                 </div>
-                <div>
+                <div className="hidden md:block">
                   <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c9b11eab41-570c42c03e3e45d2a613.png" alt="Step 1" className="rounded-2xl shadow-lg" />
                 </div>
               </div>
 
               {/* Step 2 */}
               <div className="grid md:grid-cols-2 gap-12 items-center mb-10 relative">
-                <div>
+                <div className="hidden md:block">
                   <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/340204300c-710cde7fae0522df62bc.png" alt="Step 2" className="rounded-2xl shadow-lg" />
                 </div>
                 <div className="pl-8">
@@ -87,7 +87,7 @@ export default function HowItWorks({
                     <li>✅ Best For Your Career</li>
                   </ul>
                 </div>
-                <div>
+                <div className="hidden md:block">
                   <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/d64b79fe72-deb5e6169149667d846d.png" alt="Step 3" className="rounded-2xl shadow-lg" />
                 </div>
               </div>

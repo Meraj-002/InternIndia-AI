@@ -157,18 +157,16 @@ const DetailsCard: React.FC<Props> = ({ open, onClose, internship }) => {
                             </div>
 
                             <div>
-                                <p className="text-sm text-gray-500 mb-2">Benefits</p>
+                                <p className="text-sm text-gray-500 mb-2">Specialization</p>
                                 <div className="flex flex-wrap gap-2">
-                                    {internship.benefits.map((benefit: string, index: number) => (
-                                        <span
-                                            key={index}
-                                            className="px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm"
-                                        >
-                                            {benefit}
+                                    {internship.specialization && (
+                                        <span className="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm">
+                                            {internship.specialization}
                                         </span>
-                                    ))}
+                                    )}
                                 </div>
                             </div>
+
                         </div>
                     </div>
 

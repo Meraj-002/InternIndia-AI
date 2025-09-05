@@ -3,10 +3,10 @@ import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube } 
 export default function Footer() {
   return (
     <footer className="bg-[#0f172a] text-gray-300 py-12" id="footer">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16">
         
         {/* Column 1 - Logo & Socials */}
-        <div>
+        <div className="pr-12">
           <div className="flex items-center gap-3">
             <div className="p-2 bg-green-500 rounded-lg">
               <span className="text-white font-bold">AI</span>
@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         {/* Column 2 - Quick Links */}
-        <div>
+        <div >
           <h3 className="text-white font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li><a href="#home" className="hover:text-white">Home</a></li>
@@ -52,18 +52,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 3 - Support */}
-        <div>
-          <h3 className="text-white font-semibold mb-3">Support</h3>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-white">Help Center</a></li>
-            <li><a href="#" className="hover:text-white">Contact Support</a></li>
-            <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-            <li><a href="#" className="hover:text-white">Terms of Service</a></li>
-            <li><a href="#" className="hover:text-white">Cookie Policy</a></li>
-            <li><a href="#" className="hover:text-white">Safety Guidelines</a></li>
-          </ul>
-        </div>
 
         {/* Column 4 - Get in Touch */}
         <div>
