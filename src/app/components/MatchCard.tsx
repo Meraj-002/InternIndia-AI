@@ -1,8 +1,18 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Internship } from "@/app/utils/types";
 import { MapPin, Building2, Star } from "lucide-react";
 import { toList } from "@/app/utils/scoring";
+
+const lightColors = [
+  "bg-blue-100 text-blue-700",
+  "bg-green-100 text-green-700",
+  "bg-yellow-100 text-yellow-700",
+  "bg-purple-100 text-purple-700",
+  "bg-pink-100 text-pink-700",
+  "bg-indigo-100 text-indigo-700",
+  "bg-red-100 text-red-700",
+];
 
 export default function MatchCard({
   job,
@@ -13,8 +23,10 @@ export default function MatchCard({
   score: number;
   onViewDetails: () => void;
 }) {
+  const [imgError, setImgError] = useState(false);
+
   // ✅ Ensure skills is always string[]
-  const skills = toList(job.skills).slice(0, 4);
+  const skills = toList(job.skills).slice(0, 3);
 
   // ✅ Specialization can be array or string
   const specialization = Array.isArray(job.specialization)
@@ -23,20 +35,29 @@ export default function MatchCard({
 
   const paid = /\d/.test(job.stipend || "");
 
+  // Pick random fallback style
+  const fallbackStyle =
+    lightColors[job.companyName?.charCodeAt(0) % lightColors.length];
+
   return (
     <div className="relative bg-white rounded-2xl shadow-lg p-5 transition-transform transform hover:scale-101 hover:shadow-2xl duration-300 ease-in-out">
       <div className="flex items-start justify-between">
         {/* Company info */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl grid place-items-center">
-            {job.companyLogo ? (
+          <div className="w-12 h-12 rounded-full grid place-items-center overflow-hidden">
+            {job.companyLogo && !imgError ? (
               <img
                 src={job.companyLogo}
                 alt={job.companyName || "Company"}
                 className="w-full h-full object-cover rounded-full"
+                onError={() => setImgError(true)}
               />
             ) : (
-              <span className="text-xl">💼</span>
+              <div
+                className={`w-full h-full flex items-center justify-center font-bold text-lg rounded-full ${fallbackStyle}`}
+              >
+                {job.companyName?.[0]?.toUpperCase() || "?"}
+              </div>
             )}
           </div>
           <div>
@@ -69,24 +90,20 @@ export default function MatchCard({
       {/* Tags */}
       <div className="mt-3 flex flex-wrap gap-2 text-sm">
         {skills.length > 0 && (
-  <div className="flex gap-2 flex-wrap">
-    {/* Label card */}
-    <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-semibold">
-      Skills : 
-    </span>
-
-    {/* Each skill in its own card */}
-    {skills.map((skill, index) => (
-      <span
-        key={index}
-        className="px-3 py-1 rounded-full bg-blue-100 text-blue-700"
-      >
-        {skill}
-      </span>
-    ))}
-  </div>
-)}
-
+          <div className="flex gap-2 flex-wrap">
+            <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 font-semibold">
+              Skills:
+            </span>
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className="px-3 py-1 rounded-full bg-blue-100 text-blue-700"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        )}
 
         <span
           className={`px-3 py-1 rounded-full ${
@@ -113,9 +130,13 @@ export default function MatchCard({
         >
           View Details
         </button>
-        <button className="flex-1 bg-indigo-600 text-white py-2 rounded-lg font-semibold transition-transform transform hover:scale-102 hover:shadow-2xl duration-300 ease-in-out">
-          Apply Now
-        </button>
+        <button
+  className="flex-1 bg-indigo-600 text-white py-2 rounded-lg font-semibold transition-transform transform hover:scale-102 hover:shadow-2xl duration-300 ease-in-out"
+  onClick={() => window.open("https://pminternship.mca.gov.in/login/#", "_blank")}
+>
+  Apply Now
+</button>
+
       </div>
     </div>
   );

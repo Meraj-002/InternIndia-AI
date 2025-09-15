@@ -91,18 +91,26 @@ export function scoreJob(
 }
 
 // ✅ Now accepts internships from API safely
+// ✅ Utility: generate unique random numbers, sorted descending
+function generateDescendingRandoms(count: number, max = 70): number[] {
+  const nums = new Set<number>();
+  while (nums.size < count) {
+    nums.add(Math.floor(Math.random() * max) + 1);
+  }
+  return Array.from(nums).sort((a, b) => b - a);
+}
+
 export function getMatches(
   form: { education: string; skills: string[]; location: string[]; career: string[] },
   internships: Internship[] | unknown
 ) {
-  // 🔒 Defensive parsing
   const list: Internship[] = Array.isArray(internships)
     ? internships
     : (internships as any)?.data || [];
 
   if (!Array.isArray(list) || list.length === 0) return [];
 
-  const scored = list
+  let scored = list
     .map((job) => ({ job, score: scoreJob(job, form) }))
     .filter(({ job }) => {
       const jobSkills = toList(job.skills);
@@ -114,14 +122,29 @@ export function getMatches(
 
   if (scored.length > 0) {
     const count = clamp(scored.length, 3, 5);
-    return scored.slice(0, count);
+
+    // ✅ Generate random replacements for score=0
+    const randoms = generateDescendingRandoms(count);
+    let rIndex = 0;
+
+    scored = scored.slice(0, count).map((item) => {
+      if (item.score === 0) {
+        return { ...item, score: randoms[rIndex++] };
+      }
+      return item;
+    });
+
+    return scored;
   }
 
   // fallback: random jobs
   const shuffled = [...list].sort(() => 0.5 - Math.random());
   const randomCount = Math.min(5, Math.max(3, shuffled.length));
-  return shuffled.slice(0, randomCount).map((job) => ({
+  const randoms = generateDescendingRandoms(randomCount);
+
+  return shuffled.slice(0, randomCount).map((job, i) => ({
     job,
-    score: 30,
+    score: randoms[i],
   }));
 }
+

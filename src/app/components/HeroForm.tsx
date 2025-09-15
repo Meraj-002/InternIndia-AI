@@ -55,15 +55,15 @@ export default function HeroForm({
           {/* Buttons */}
           <div className="mt-6 flex space-x-4">
             <a
-  href="#"
-  onClick={(e) => {
-    e.preventDefault();
-    document.getElementById("education-input")?.focus();
-  }}
-  className="flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold rounded-lg shadow-md transition-transform transform hover:scale-102 hover:shadow-xl duration-300 ease-in-out"
->
-  <Search className="text-white w-6 h-4 font-bold pr-2" strokeWidth={3}/>   Find My Internship
-</a>
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("education-input")?.focus();
+              }}
+              className="flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-green-500 text-white font-semibold rounded-lg shadow-md transition-transform transform hover:scale-102 hover:shadow-xl duration-300 ease-in-out"
+            >
+              <Search className="text-white w-6 h-4 font-bold pr-2" strokeWidth={3} />   Find My Internship
+            </a>
             <button
               onClick={() => {
                 if (videoRef.current) {
@@ -112,14 +112,23 @@ export default function HeroForm({
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <AutocompleteSingle
-              id="education-input"
+                id="education-input"
                 label="Education Level"
                 options={[
-                  "12th Pass",
-                  "Diploma Holder",
-                  "Graduate",
-                  "Post Graduate",
-                  "PhD",
+                  "12th Pass / Higher Secondary",
+                  "Diploma / Polytechnic",
+                  "B.Tech / B.E",
+                  "BCA",
+                  "BBA",
+                  "B.Com",
+                  "B.Sc",
+                  "B.A",
+                  "M.Tech / M.E.",
+                  "M.Com",
+                  "M.Sc",
+                  "M.A",
+                  "MCA",
+                  "MBA",
                 ]}
                 value={form.education}
                 onChange={(val) => setForm({ ...form, education: val })}
@@ -130,21 +139,144 @@ export default function HeroForm({
               <AutocompleteMulti
                 label="Skills & Expertise"
                 options={[
+                  // 🔹 Development & Programming
                   "Web Development",
-                  "Data Science",
-                  "AI & ML",
-                  "UI/UX Design",
-                  "Cybersecurity",
-                  "Cloud Computing",
+                  "Mobile App Development",
+                  "Frontend Development",
+                  "Backend Development",
+                  "Full Stack Development",
+                  "Software Development",
                   "JavaScript",
+                  "TypeScript",
                   "React",
+                  "Next.js",
+                  "Angular",
+                  "Vue.js",
+                  "Node.js",
+                  "Express.js",
                   "Python",
-                  "SQL",
-                  "Excel",
-                  "AWS",
-                  "Figma",
                   "Django",
-                ]}
+                  "Flask",
+                  "Java",
+                  "Spring Boot",
+                  "C",
+                  "C++",
+                  "C#",
+                  "Go",
+                  "PHP",
+                  "Laravel",
+                  "Ruby on Rails",
+                  "Kotlin",
+                  "Swift",
+                  "Objective-C",
+                  "Flutter",
+                  "React Native",
+                  "HTML",
+                  "CSS",
+                  "Tailwind CSS",
+                  "Bootstrap",
+
+                  // 🔹 Data, AI & Cloud
+                  "Data Science",
+                  "Data Analytics",
+                  "Business Analytics",
+                  "Artificial Intelligence",
+                  "Machine Learning",
+                  "Deep Learning",
+                  "NLP",
+                  "Computer Vision",
+                  "Big Data",
+                  "Hadoop",
+                  "Spark",
+                  "SQL",
+                  "NoSQL",
+                  "MongoDB",
+                  "PostgreSQL",
+                  "MySQL",
+                  "Excel",
+                  "Tableau",
+                  "Power BI",
+                  "Google Analytics",
+                  "Cloud Computing",
+                  "AWS",
+                  "Microsoft Azure",
+                  "Google Cloud Platform (GCP)",
+
+                  // 🔹 Cybersecurity & DevOps
+                  "Cybersecurity",
+                  "Ethical Hacking",
+                  "Penetration Testing",
+                  "DevOps",
+                  "CI/CD",
+                  "Docker",
+                  "Kubernetes",
+                  "Jenkins",
+                  "Git",
+                  "GitHub",
+                  "GitLab",
+
+                  // 🔹 Design & Creative
+                  "UI/UX Design",
+                  "Wireframing",
+                  "Prototyping",
+                  "Design Thinking",
+                  "Figma",
+                  "Adobe XD",
+                  "Sketch",
+                  "Photoshop",
+                  "Illustrator",
+                  "Canva",
+                  "Graphic Design",
+                  "Animation",
+                  "3D Design",
+                  "Video Editing",
+
+                  // 🔹 Business & Management
+                  "Product Management",
+                  "Project Management",
+                  "Agile",
+                  "Scrum",
+                  "Jira",
+                  "Trello",
+                  "Notion",
+                  "Asana",
+                  "Business Strategy",
+                  "Market Research",
+                  "Financial Analysis",
+                  "Digital Marketing",
+                  "SEO",
+                  "SEM",
+                  "Content Writing",
+                  "Copywriting",
+                  "Social Media Marketing",
+                  "Email Marketing",
+                  "Sales",
+                  "Negotiation",
+                  "Consulting",
+
+                  // 🔹 Soft Skills
+                  "Communication",
+                  "Leadership",
+                  "Problem Solving",
+                  "Critical Thinking",
+                  "Creativity",
+                  "Collaboration",
+                  "Time Management",
+                  "Adaptability",
+                  "Presentation Skills",
+
+                  // 🔹 Misc / Emerging Tech
+                  "Blockchain",
+                  "Cryptography",
+                  "IoT",
+                  "Embedded Systems",
+                  "Game Development",
+                  "Unity",
+                  "Unreal Engine",
+                  "AR/VR",
+                  "Metaverse"
+                ]
+                }
                 values={form.skills}
                 onChange={(val) => setForm({ ...form, skills: val })}
                 placeholder="Type or select skills (up to 3)"
@@ -156,10 +288,89 @@ export default function HeroForm({
                 options={[
                   "Remote",
                   "Delhi",
+                  "Mumbai",
+                  "Pune",
+                  "Nagpur",
                   "Maharashtra",
-                  "Uttar Pradesh",
+                  "Bengaluru",
+                  "Mysuru",
+                  "Karnataka",
+                  "Hyderabad",
+                  "Telangana",
+                  "Chennai",
+                  "Madurai",
+                  "Tamil Nadu",
+                  "Kolkata",
+                  "West Bengal",
+                  "Ahmedabad",
+                  "Surat",
+                  "Vadodara",
                   "Gujarat",
-                ]}
+                  "Jaipur",
+                  "Jodhpur",
+                  "Rajasthan",
+                  "Lucknow",
+                  "Kanpur",
+                  "Uttar Pradesh",
+                  "Noida",
+                  "Gurugram",
+                  "Haryana",
+                  "Chandigarh",
+                  "Punjab",
+                  "Bhopal",
+                  "Indore",
+                  "Madhya Pradesh",
+                  "Patna",
+                  "Bihar",
+                  "Ranchi",
+                  "Jharkhand",
+                  "Raipur",
+                  "Chhattisgarh",
+                  "Bhubaneswar",
+                  "Odisha",
+                  "Guwahati",
+                  "Assam",
+                  "Shillong",
+                  "Meghalaya",
+                  "Gangtok",
+                  "Sikkim",
+                  "Aizawl",
+                  "Mizoram",
+                  "Imphal",
+                  "Manipur",
+                  "Agartala",
+                  "Tripura",
+                  "Itanagar",
+                  "Arunachal Pradesh",
+                  "Kohima",
+                  "Nagaland",
+                  "Leh",
+                  "Jammu",
+                  "Srinagar",
+                  "Jammu & Kashmir",
+                  "Shimla",
+                  "Himachal Pradesh",
+                  "Dehradun",
+                  "Uttarakhand",
+                  "Panaji",
+                  "Goa",
+                  "Thiruvananthapuram",
+                  "Kochi",
+                  "Kerala",
+                  "Port Blair",
+                  "Andaman & Nicobar Islands",
+                  "Kavaratti",
+                  "Lakshadweep",
+                  "Daman",
+                  "Diu",
+                  "Dadra & Nagar Haveli",
+                  "Puducherry",
+                  "Andhra Pradesh",
+                  "Amaravati",
+                  "Visakhapatnam",
+                  "Work From Home"
+                ]
+                }
                 values={form.location}
                 onChange={(val) => setForm({ ...form, location: val })}
                 placeholder="Type or select location (up to 3)"
@@ -170,14 +381,75 @@ export default function HeroForm({
                 label="Career Interests"
                 options={[
                   "Software Engineering",
+                  "Web Development",
+                  "Mobile App Development",
+                  "Frontend Development",
+                  "Backend Development",
+                  "Full Stack Development",
+                  "Data Science",
                   "Data Analytics",
-                  "Research",
-                  "Marketing",
+                  "Business Analytics",
+                  "Machine Learning",
+                  "Artificial Intelligence",
+                  "Cloud Computing",
+                  "Cybersecurity",
+                  "Blockchain",
+                  "DevOps",
+                  "Internet of Things (IoT)",
+                  "Embedded Systems",
+                  "Game Development",
+                  "AR/VR Development",
                   "Product Management",
-                  "UI/UX",
-                  "Cloud",
-                  "AI",
-                ]}
+                  "Project Management",
+                  "UI/UX Design",
+                  "Graphic Design",
+                  "Animation & Multimedia",
+                  "Research",
+                  "Academic Research",
+                  "Market Research",
+                  "Marketing",
+                  "Digital Marketing",
+                  "Content Writing",
+                  "SEO",
+                  "Social Media Management",
+                  "Public Relations",
+                  "Sales",
+                  "Business Development",
+                  "Consulting",
+                  "Finance",
+                  "Investment Banking",
+                  "Accounting",
+                  "Human Resources (HR)",
+                  "Operations Management",
+                  "Supply Chain Management",
+                  "Entrepreneurship",
+                  "Law / Legal",
+                  "Policy & Government",
+                  "Education & Teaching",
+                  "Healthcare Management",
+                  "Biotechnology",
+                  "Pharmaceuticals",
+                  "Mechanical Engineering",
+                  "Electrical Engineering",
+                  "Civil Engineering",
+                  "Electronics Engineering",
+                  "Chemical Engineering",
+                  "Architecture",
+                  "Environmental Science",
+                  "Energy & Sustainability",
+                  "Hospitality & Tourism",
+                  "Event Management",
+                  "Journalism",
+                  "Mass Communication",
+                  "Film & Media",
+                  "Photography",
+                  "Music & Performing Arts",
+                  "Sports Management",
+                  "NGO / Social Work",
+                  "Psychology",
+                  "Other"
+                ]
+                }
                 values={form.career}
                 onChange={(val) => setForm({ ...form, career: val })}
                 placeholder="Type or select interests (up to 3)"

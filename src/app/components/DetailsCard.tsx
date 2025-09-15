@@ -266,7 +266,7 @@ const DetailsCard: React.FC<Props> = ({ open, onClose, internship }) => {
                         Close
                     </button>
                     <button
-                        onClick={() => window.open("https://www.google.com", "_blank")}
+                        onClick={() => window.open("https://pminternship.mca.gov.in/login/#", "_blank")}
                         className="px-5 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700"
                     >
                         Apply Now

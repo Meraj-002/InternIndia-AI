@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function Header() {
   useEffect(() => {
@@ -65,7 +66,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <div className="w-9 h-9 bg-gradient-to-r from-blue-500 to-green-500 rounded-full"></div>
+          <div className="relative w-12 h-12 rounded-lg overflow-hidden">
+            <Image
+              src="/logo.jpg"
+              alt="logo"
+              fill
+              className="object-cover"
+            />
+          </div>
+
           <div>
             <h1 className="text-lg font-bold text-gray-800">InternIndia-AI</h1>
             <p className="text-xs text-gray-500 -mt-1">

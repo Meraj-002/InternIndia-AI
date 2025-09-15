@@ -1,16 +1,23 @@
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
     <footer className="bg-[#0f172a] text-gray-300 py-12" id="footer">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16">
-        
+
         {/* Column 1 - Logo & Socials */}
         <div className="pr-12">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-green-500 rounded-lg">
-              <span className="text-white font-bold">AI</span>
+            <div className="relative w-15 h-15 rounded-lg overflow-hidden">
+              <Image
+                src="/logo.jpg"
+                alt="logo"
+                fill
+                className="object-cover"
+              />
             </div>
+
             <div>
               <h2 className="text-lg font-bold text-white">InternIndia-AI</h2>
               <p className="text-sm">Smart Internship Matching</p>
@@ -18,7 +25,7 @@ export default function Footer() {
           </div>
 
           <p className="mt-4 text-sm leading-relaxed">
-            Empowering Indian students to discover their perfect internships 
+            Empowering Indian students to discover their perfect internships
             through AI-powered matching technology.
           </p>
 
@@ -75,7 +82,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm text-gray-400">
-       Made with <span className="text-red-500">❤️</span> for Indian students by Team Infinixor.
+        Made with <span className="text-red-500">❤️</span> for Indian students by Team Infinixor.
       </div>
     </footer>
   );
