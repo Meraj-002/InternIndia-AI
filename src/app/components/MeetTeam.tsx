@@ -13,7 +13,7 @@ export default function MeetTeam(){
       {/* Member 1 */}
       <div className="text-center">
         <img
-          src="https://randomuser.me/api/portraits/men/32.jpg"
+          src="https://res.cloudinary.com/dfhiyvm2x/image/upload/v1758031348/1758030322652.Screenshot_20250916-191229_ppylsi.jpg"
           alt="Meraj Alam"
           className="w-28 h-28 mx-auto rounded-full object-cover mb-4"
         />
@@ -26,7 +26,7 @@ export default function MeetTeam(){
       {/* Member 2 */}
       <div className="text-center">
         <img
-          src="https://randomuser.me/api/portraits/women/44.jpg"
+          src="https://res.cloudinary.com/dfhiyvm2x/image/upload/v1758031346/WhatsApp_Image_2025-09-16_at_6.51.01_PM_3_dvh4zc.jpg"
           alt="Fauzia Nishat"
           className="w-28 h-28 mx-auto rounded-full object-cover mb-4"
         />
@@ -38,7 +38,7 @@ export default function MeetTeam(){
       {/* Member 3 */}
       <div className="text-center">
         <img
-          src="https://randomuser.me/api/portraits/men/12.jpg"
+          src="https://res.cloudinary.com/dfhiyvm2x/image/upload/v1758032949/WhatsApp_Image_2025-09-16_at_6.51.08_PM_nvnnj2.jpg"
           alt="Sameer Sadar"
           className="w-28 h-28 mx-auto rounded-full object-cover mb-4"
         />
@@ -50,7 +50,7 @@ export default function MeetTeam(){
       {/* Member 4 */}
       <div className="text-center">
         <img
-          src="https://randomuser.me/api/portraits/women/65.jpg"
+          src="https://res.cloudinary.com/dfhiyvm2x/image/upload/v1758031347/WhatsApp_Image_2025-09-16_at_6.51.01_PM_rxlswr.jpg"
           alt="Md Hashim"
           className="w-28 h-28 mx-auto rounded-full object-cover mb-4"
         />
@@ -62,7 +62,7 @@ export default function MeetTeam(){
       {/* Member 5 */}
       <div className="text-center">
         <img
-          src="https://randomuser.me/api/portraits/men/67.jpg"
+          src="https://res.cloudinary.com/dfhiyvm2x/image/upload/v1758031346/WhatsApp_Image_2025-09-16_at_6.51.01_PM_2_oz6smz.jpg"
           alt="Aiman Nishat"
           className="w-28 h-28 mx-auto rounded-full object-cover mb-4"
         />
@@ -74,7 +74,7 @@ export default function MeetTeam(){
       {/* Member 6 */}
       <div className="text-center">
         <img
-          src="https://randomuser.me/api/portraits/women/72.jpg"
+          src="https://res.cloudinary.com/dfhiyvm2x/image/upload/v1758031347/WhatsApp_Image_2025-09-16_at_6.51.01_PM_1_vqxxup.jpg"
           alt="Sabik Azmi"
           className="w-28 h-28 mx-auto rounded-full object-cover mb-4"
         />

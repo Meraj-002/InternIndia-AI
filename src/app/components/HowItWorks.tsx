@@ -99,7 +99,7 @@ export default function HowItWorks({
             <iframe
               ref={videoRef}
               className="rounded-2xl shadow-lg w-full h-64 md:h-80"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src="https://www.youtube.com/embed/p3i7jQNBfeg"
               title="YouTube video"
               frameBorder={0}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
