@@ -19,7 +19,7 @@ export default function MeetTeam(){
         />
         <h3 className="text-lg font-semibold">Meraj Alam</h3>
         <p className="text-blue-600 font-medium">Team Leader</p>
-        <p className="text-sm text-gray-500"> Next.js + Tailwind CSS
+        <p className="text-sm text-gray-500"> Next.js + TypeScript + Tailwind CSS
         </p>
       </div>
 
@@ -68,7 +68,7 @@ export default function MeetTeam(){
         />
         <h3 className="text-lg font-semibold">Aiman Nishat</h3>
         <p className="text-red-600 font-medium">CSE Core</p>
-        <p className="text-sm text-gray-500">Project Deployment</p>
+        <p className="text-sm text-gray-500">Deployment+ Backend API</p>
       </div>
 
       {/* Member 6 */}
