@@ -2,9 +2,42 @@
 
 export default function HowItWorks({
   videoRef,
+  selectedLanguage,
 }: {
   videoRef: React.RefObject<HTMLIFrameElement | null>;
+  selectedLanguage: string;
 }) {
+
+  const videoMap: Record<string, string> = {
+    en: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    hi: "https://www.youtube.com/embed/skxx02tp_Uw",
+    as: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    bn: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    brx: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    doi: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    gu: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    kn: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    ks: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    kok: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    mai: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    ml: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    mni: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    mr: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    ne: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    or: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    pa: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    sa: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    sat: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    sd: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    ta: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    te: "https://www.youtube.com/embed/p3i7jQNBfeg",
+    ur: "https://www.youtube.com/embed/dmbiUWI_y3c",
+    // add more...
+  };
+
+
+  const videoSrc = videoMap[selectedLanguage] || videoMap["en"];
+
   return (
     <div className="bg-white py-6" id="how-it-works">
       <h2
@@ -99,7 +132,8 @@ export default function HowItWorks({
             <iframe
               ref={videoRef}
               className="rounded-2xl shadow-lg w-full h-64 md:h-80"
-              src="https://www.youtube.com/embed/p3i7jQNBfeg"
+              // src="https://www.youtube.com/embed/p3i7jQNBfeg"
+              src={videoSrc}
               title="YouTube video"
               frameBorder={0}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

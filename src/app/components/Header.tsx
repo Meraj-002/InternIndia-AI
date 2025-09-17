@@ -2,7 +2,13 @@
 import { useEffect } from "react";
 import Image from "next/image";
 
-export default function Header() {
+export default function Header({
+  setSelectedLanguage,
+}:{
+  setSelectedLanguage: (lang: string) => void;
+} ) {
+  
+  
   useEffect(() => {
     // 🟢 Force reset to English every time page loads
     document.cookie =
@@ -31,14 +37,24 @@ export default function Header() {
   }, []);
 
   // Custom language switcher
+  // const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const lang = e.target.value;
+  //   const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+  //   if (select) {
+  //     select.value = lang;
+  //     select.dispatchEvent(new Event("change"));
+  //   }
+  // };
+
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const lang = e.target.value;
-    const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
-    if (select) {
-      select.value = lang;
-      select.dispatchEvent(new Event("change"));
-    }
-  };
+      const lang = e.target.value;
+      setSelectedLanguage(lang); // ✅ notify parent
+      const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+      }
+    };
 
   useEffect(() => {
     const removeBanner = () => {

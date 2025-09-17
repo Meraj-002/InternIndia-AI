@@ -75,6 +75,7 @@ export default function Home() {
     Array<{ job: Internship; score: number }>
   >([]);
   const [allInternships, setAllInternships] = useState<Internship[]>([]);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
   const resultsRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLIFrameElement | null>(null);
 
@@ -181,7 +182,7 @@ export default function Home() {
   // ----------------------
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50">
-      <Header />
+      <Header setSelectedLanguage={setSelectedLanguage} />
       <HeroForm
         form={form}
         setForm={setForm}
@@ -189,12 +190,16 @@ export default function Home() {
         handleSubmit={handleSubmit}
         videoRef={videoRef}
       />
+            {/* pass selectedLanguage down */}
+            <HowItWorks videoRef={videoRef} selectedLanguage={selectedLanguage} />
+      {/* <Header /> */}
+      
       {results.length > 0 && (
         <div id="match-results" ref={resultsRef}>
           <ResultsGrid items={results} />
         </div>
       )}
-      <HowItWorks videoRef={videoRef} />
+      {/* <HowItWorks videoRef={videoRef} /> */}
       <WhyChoose />
       <Impacts />
       <AboutUs />
